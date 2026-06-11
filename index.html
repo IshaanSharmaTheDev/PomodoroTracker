@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>PomodoroTracker</title><link rel="stylesheet" href="styles/main.css"/></head>
+<body>
+<div id="app">
+  <header class="topbar"><span class="logo">🍅 PomodoroTracker</span>
+    <div class="topbar-right">
+      <button id="btn-settings">⚙</button>
+      <button id="btn-stats">📊 Stats</button>
+    </div>
+  </header>
+  <div class="main">
+    <div class="timer-card">
+      <div class="phase-tabs">
+        <button class="phase-btn active" data-phase="work">Work</button>
+        <button class="phase-btn" data-phase="short">Short Break</button>
+        <button class="phase-btn" data-phase="long">Long Break</button>
+      </div>
+      <svg class="ring-svg" viewBox="0 0 200 200">
+        <circle class="ring-bg" cx="100" cy="100" r="88"/>
+        <circle class="ring-fg" id="ring-fg" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="0"/>
+      </svg>
+      <div class="timer-center">
+        <div class="time-display" id="time-display">25:00</div>
+        <div class="session-label" id="session-label">Session 1</div>
+      </div>
+      <div class="timer-controls">
+        <button id="btn-start" class="btn-primary">Start</button>
+        <button id="btn-pause" disabled>Pause</button>
+        <button id="btn-reset">Reset</button>
+        <button id="btn-skip">Skip →</button>
+      </div>
+    </div>
+    <div class="task-card">
+      <div class="task-header"><span>Tasks</span><button id="btn-add-task">+ Add</button></div>
+      <div id="task-list" class="task-list"></div>
+    </div>
+    <div id="log-card" class="log-card">
+      <div class="log-header">Session Log</div>
+      <div id="log-list" class="log-list"></div>
+    </div>
+  </div>
+</div>
+<div id="settings-modal" class="modal hidden">
+  <div class="modal-inner">
+    <h2>Settings</h2>
+    <div class="setting-row"><label>Work duration (min)</label><input type="number" id="s-work" value="25" min="1" max="90"/></div>
+    <div class="setting-row"><label>Short break (min)</label><input type="number" id="s-short" value="5" min="1" max="30"/></div>
+    <div class="setting-row"><label>Long break (min)</label><input type="number" id="s-long" value="15" min="1" max="60"/></div>
+    <div class="setting-row"><label>Sessions until long break</label><input type="number" id="s-sessions" value="4" min="1" max="10"/></div>
+    <div class="setting-row"><label>Sound alerts</label><input type="checkbox" id="s-sound" checked/></div>
+    <div class="setting-row"><label>Auto-start next</label><input type="checkbox" id="s-autostart"/></div>
+    <button id="settings-save" class="btn-primary">Save</button>
+    <button id="settings-cancel">Cancel</button>
+  </div>
+</div>
+<div id="stats-modal" class="modal hidden">
+  <div class="modal-inner">
+    <h2>Statistics</h2>
+    <div id="stats-content"></div>
+    <button id="stats-close" class="btn-primary">Close</button>
+  </div>
+</div>
+<script src="src/timer.js"></script>
+<script src="src/tasks.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
